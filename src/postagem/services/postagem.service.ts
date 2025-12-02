@@ -1,6 +1,6 @@
 import { InjectRepository } from "@nestjs/typeorm";
 import { Postagem } from "../entities/postagem.entity";
-import { Repository } from "typeorm/browser/repository/Repository.js";
+import { Repository } from "typeorm";
 import { Injectable } from "@nestjs/common/decorators/core/injectable.decorator";
 
 @Injectable()
