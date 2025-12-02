@@ -1,5 +1,7 @@
 <p align="center">
+<a href="https://brazil.generation.org/"><img src="./.github/assets/generation-bg.png" width="150" alt="Generation Logo"/></a>
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
@@ -21,78 +23,162 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# Blog Pessoal - API (NestJS)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+API backend de exemplo para um blog pessoal, criada com NestJS, TypeScript e TypeORM.
 
-## Project setup
+**Status:** Em desenvolvimento
 
-```bash
-$ npm install
+## Visão geral
+
+Este repositório contém a API do projeto `blogpessoal_nest`. Ele fornece endpoints básicos para gerenciar postagens (ex.: listar postagens). O projeto usa MySQL via TypeORM e segue a estrutura padrão de um app NestJS.
+
+## Contexto do projeto
+
+Este projeto foi desenvolvido como atividade prática dentro do bootcamp da **Generation Brasil**. O objetivo é consolidar conceitos de backend com NestJS e TypeORM, aplicando padrões de projeto e operações básicas sobre entidades (CRUD).
+
+### Referência — Conta Bancaria (Turma JavaScript 10)
+
+Simulação de um sistema bancário simples (CRUD de contas e operações).
+
+Sobre
+
+Projeto didático que implementa operações básicas de uma conta bancária: criação, listagem, busca, atualização, exclusão, saque, depósito e transferência entre contas. Desenvolvido como atividade prática da turma de JavaScript da Generation.
+
+Funcionalidades
+
+- Criar, listar e consultar contas por número
+- Atualizar e apagar contas
+- Sacar e depositar valores
+- Transferir valores entre contas
+- Menu interativo via terminal (utilizando `readline-sync`)
+
+Observação: enquanto o projeto `blogpessoal_nest` é uma API REST com NestJS, a referência acima descreve um sistema didático de console. Você pode adaptar funcionalidades (ex.: operações de conta) para endpoints REST conforme necessário.
+
+## Tecnologias
+
+- Node.js + npm
+- NestJS
+- TypeScript
+- TypeORM
+- MySQL (ou MariaDB)
+
+## Pré-requisitos
+
+- Node.js >= 18
+- npm
+- Banco de dados MySQL em execução
+
+## Variáveis de ambiente (exemplo)
+
+Crie um arquivo `.env` na raiz com as variáveis básicas de conexão (ou ajuste conforme sua configuração):
+
+```
+DB_HOST=localhost
+DB_PORT=3306
+DB_USERNAME=root
+DB_PASSWORD=senha
+DB_NAME=blogpessoal_db
+
+# Opcional: ajuste a porta do servidor
+PORT=3000
 ```
 
-## Compile and run the project
+## Instalação
+
+Instale dependências:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
+## Scripts úteis
+
+- `npm run start` — inicia a aplicação
+- `npm run start:dev` — inicia em watch mode (recarrega automaticamente)
+- `npm run start:env` — inicia em watch usando `.env`
+- `npm run start:prod` — inicia a versão compilada (após `npm run build`)
+- `npm run build` — compila o projeto
+- `npm run test` — executa testes unitários
+- `npm run test:e2e` — executa testes end-to-end
+
+Consulte o `package.json` para a lista completa de scripts.
+
+## Executando localmente
+
+1. Configure o banco de dados e as variáveis no `.env`.
+2. Rode `npm install`.
+3. Inicie o servidor em modo de desenvolvimento:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run start:dev
 ```
 
-## Deployment
+O servidor padrão roda em `http://localhost:3000` (ou conforme `PORT`).
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## Endpoints disponíveis
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+- `GET /postagens` — retorna todas as postagens (implementado em `src/postagem/controllers/postagem.controller.ts`).
+
+Exemplo de resposta (JSON):
+
+```json
+[
+  {
+    "id": 1,
+    "titulo": "Minha primeira postagem",
+    "texto": "Conteúdo da postagem",
+    "data": "2025-12-02T00:00:00.000Z"
+  }
+]
+```
+
+> Observação: outros endpoints (criar, atualizar, deletar) podem ser adicionados no serviço `postagem` conforme necessidade.
+
+## Estrutura do projeto
+
+- `src/` — código-fonte
+  - `postagem/` — módulo de postagens
+    - `controllers/` — controllers (rotas)
+    - `services/` — lógica de negócio
+    - `entities/` — entidades TypeORM
+
+## Testes
+
+Executar testes unitários:
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm run test
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Executar testes e2e:
 
-## Resources
+```bash
+npm run test:e2e
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+## Contribuição
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Contribuições são bem-vindas. Sugestões:
 
-## Support
+- Abra uma issue descrevendo a melhoria/bug.
+- Faça um fork, crie uma branch com a feature/bugfix e envie um pull request.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Próximos passos sugeridos
 
-## Stay in touch
+- Adicionar endpoints para CRUD completo de postagens.
+- Criar `README` de desenvolvimento com instruções de migração/seed do banco.
+- Adicionar `.env.example` com variáveis necessárias.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Licença
 
-## License
+Veja o campo `license` em `package.json`. Atualmente está como `UNLICENSED` — atualize conforme necessário.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+---
+
+Se quiser, posso também:
+
+- Gerar um arquivo `README` em inglês.
+- Criar um `/.env.example` com as variáveis usadas.
+- Implementar endpoints faltantes (criar/atualizar/deletar) e os testes correspondentes.
+
