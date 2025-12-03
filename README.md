@@ -86,7 +86,7 @@ O servidor estará disponível em `http://localhost:3000`
 | `GET` | `/postagens` | Lista todas as postagens |
 | `GET` | `/postagens/:id` | Busca postagem por ID |
 | `POST` | `/postagens` | Cria nova postagem |
-| `PUT` | `/postagens/:id` | Atualiza postagem |
+| `PUT` | `/postagens` | Atualiza postagem |
 | `DELETE` | `/postagens/:id` | Remove postagem |
 
 ### Exemplo de Requisição
