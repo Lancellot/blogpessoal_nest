@@ -40,4 +40,5 @@ export class PostagemController {
     create(@Body() postagem: Postagem): Promise<Postagem> {
         return this.postagemService.create(postagem);
     }
+    
 }
