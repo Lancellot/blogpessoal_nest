@@ -2,6 +2,10 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Postagem } from "../entities/postagem.entity";
 import { Repository } from "typeorm";
 import { Injectable } from "@nestjs/common/decorators/core/injectable.decorator";
+import { 
+    HttpException, 
+    HttpStatus 
+} from "@nestjs/common";
 
 @Injectable()
 export class PostagemService {
@@ -12,5 +16,19 @@ export class PostagemService {
 
     async findAll(): Promise<Postagem[]> {
         return this.postagemRepository.find();
+    }
+
+    async findById(id: number): Promise<Postagem> {
+        
+        const postagem = await this.postagemRepository.findOne({
+            where: {
+                id
+            }
+        });
+
+        if(!postagem) 
+            throw new HttpException('Postagem não encontrada', HttpStatus.NOT_FOUND);
+        
+        return postagem;
     }
 }
