@@ -13,7 +13,7 @@ import {
 import { TemaService } from "../services/tema.service";
 import { Tema } from "../entities/tema.entities";
 
-@Controller('/tema')
+@Controller('/temas')
 export class TemaController {
     constructor(private readonly temaService: TemaService) { }
 
