@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Postagem } from './postagem/entities/postagem.entity';
 import { PostagemModule } from './postagem/postagem.module';
+import { Tema } from './tema/entities/tema.entities';
+import { TemaModule } from './tema/tema.module';
 
 @Module({
   imports: [
@@ -12,10 +14,11 @@ import { PostagemModule } from './postagem/postagem.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [Postagem],
+      entities: [Postagem, Tema],
       synchronize: process.env.DB_SYNCHRONIZE === 'development',
     }),
-    PostagemModule
+    PostagemModule,
+    TemaModule
   ],
   controllers: [],
   providers: [],
