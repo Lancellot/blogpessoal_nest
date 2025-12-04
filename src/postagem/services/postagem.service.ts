@@ -5,10 +5,10 @@ import {
     ILike,
     Repository
 } from "typeorm";
-import { Injectable } from "@nestjs/common/decorators/core/injectable.decorator"; // esse caminho é diferente dos outros
 import {
     HttpException,
-    HttpStatus
+    HttpStatus,
+    Injectable
 } from "@nestjs/common";
 
 
