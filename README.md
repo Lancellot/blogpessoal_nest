@@ -1,98 +1,155 @@
+# 📝 Blog Pessoal - API
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  <a href="https://brazil.generation.org/">
+    <img src="./.github/assets/generation-bg.png" width="150" alt="Generation Brasil"/>
+  </a>
+  <a href="http://nestjs.com/" target="blank">
+    <img src="https://nestjs.com/img/logo-small.svg" width="120" alt="NestJS"/>
+  </a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
+<p align="center">
+  <strong>API REST para gerenciamento de blog pessoal desenvolvida com NestJS</strong>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+<p align="center">
+  <img src="https://img.shields.io/badge/version-0.1.0-blue" alt="Versão">
+  <img src="https://img.shields.io/badge/node-%3E%3D18.0.0-green" alt="Node >= 18">
+  <img src="https://img.shields.io/badge/nestjs-10.0.0-red" alt="NestJS 10">
+  <img src="https://img.shields.io/badge/license-MIT-yellow" alt="MIT">
+</p>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
 
-## Project setup
+## 📖 Sobre o Projeto
 
-```bash
-$ npm install
-```
+API backend robusta desenvolvida durante o bootcamp da **Generation Brasil** para consolidar conhecimentos em NestJS, TypeORM e arquitetura de software. O projeto implementa um sistema completo de gerenciamento de postagens para blog pessoal.
 
-## Compile and run the project
+## ✨ Funcionalidades
 
-```bash
-# development
-$ npm run start
+- ✅ CRUD completo de postagens
+- ✅ Validação de dados com class-validator
+- ✅ Integração com MySQL/MariaDB via TypeORM
+- ✅ Arquitetura modular e escalável
+- 🔄 Sistema de autenticação JWT (em desenvolvimento)
+- 🔄 Upload de imagens (em desenvolvimento)
+- 🔄 Documentação Swagger (em desenvolvimento)
 
-# watch mode
-$ npm run start:dev
+## 🛠️ Tecnologias
 
-# production mode
-$ npm run start:prod
-```
+- **[NestJS](https://nestjs.com/)** - Framework Node.js progressivo
+- **[TypeScript](https://www.typescriptlang.org/)** - Superset JavaScript tipado
+- **[TypeORM](https://typeorm.io/)** - ORM para TypeScript
+- **[MySQL](https://www.mysql.com/)** - Banco de dados relacional
+- **[Jest](https://jestjs.io/)** - Framework de testes
 
-## Run tests
+## 🚀 Começando
 
-```bash
-# unit tests
-$ npm run test
+### Pré-requisitos
 
-# e2e tests
-$ npm run test:e2e
+- Node.js >= 18
+- MySQL ou MariaDB
+- npm ou yarn
 
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Instalação
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+# Clone o repositório
+git clone https://github.com/lancellot/blogpessoal_nest.git
+cd blogpessoal_nest
+
+# Instale as dependências
+npm install
+
+# Configure o arquivo .env
+cp .env.example .env
+# Edite o .env com suas credenciais do banco
+
+# Crie o banco de dados
+mysql -u root -p
+CREATE DATABASE blogpessoal;
+
+# Execute as migrations
+npm run migration:run
+
+# Inicie o servidor
+npm run start:dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+O servidor estará disponível em `http://localhost:3000`
 
-## Resources
+## 📚 Endpoints da API
 
-Check out a few resources that may come in handy when working with NestJS:
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| `GET` | `/postagens` | Lista todas as postagens |
+| `GET` | `/postagens/:id` | Busca postagem por ID |
+| `POST` | `/postagens` | Cria nova postagem |
+| `PUT` | `/postagens` | Atualiza postagem |
+| `DELETE` | `/postagens/:id` | Remove postagem |
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### Exemplo de Requisição
 
-## Support
+```http
+POST /postagens
+Content-Type: application/json
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+{
+  "titulo": "Minha primeira postagem",
+  "texto": "Conteúdo da postagem",
+  "data": "2024-12-02T10:00:00Z"
+}
+```
 
-## Stay in touch
+## 📁 Estrutura do Projeto
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```
+blogpessoal_nest/
+├── src/
+│   ├── main.ts                 # Entry point
+│   ├── app.module.ts           # Módulo raiz
+│   └── postagem/               # Módulo de postagens
+│       ├── controllers/        # Controllers HTTP
+│       ├── services/           # Lógica de negócio
+│       └── entities/           # Entidades do banco
+├── test/                       # Testes automatizados
+├── .env                        # Variáveis de ambiente
+├── package.json
+└── README.md
+```
 
-## License
+## 🧪 Testes
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```bash
+# Todos os testes
+npm run test
+
+# Testes com cobertura
+npm run test:cov
+
+# Testes em watch mode
+npm run test:watch
+```
+
+## 🤝 Contribuindo
+
+1. Fork o projeto
+2. Crie sua feature branch (`git checkout -b feature/MinhaFeature`)
+3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
+4. Push para a branch (`git push origin feature/MinhaFeature`)
+5. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
+
+## 👨‍💻 Autor
+
+Desenvolvido com 💙 por **Assis** - [Generation Brasil](https://brazil.generation.org/)
+
+[![GitHub](https://img.shields.io/badge/GitHub-lancellot-181717?style=flat&logo=github)](https://github.com/lancellot)
+
+---
+
+<p align="center">Feito com ❤️ e ☕</p>
