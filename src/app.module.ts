@@ -4,6 +4,7 @@ import { Postagem } from './postagem/entities/postagem.entity';
 import { PostagemModule } from './postagem/postagem.module';
 import { Tema } from './tema/entities/tema.entities';
 import { TemaModule } from './tema/tema.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { TemaModule } from './tema/tema.module';
       synchronize: process.env.DB_SYNCHRONIZE === 'development',
     }),
     PostagemModule,
-    TemaModule
+    TemaModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
