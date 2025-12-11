@@ -11,7 +11,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     private _passwordField: string;
 
     constructor(private readonly authService: AuthService) {
-        super(); 
+        super({  }); 
         this._emailField = 'email';
         this._passwordField = 'senha';
     }
