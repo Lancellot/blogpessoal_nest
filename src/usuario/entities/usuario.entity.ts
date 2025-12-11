@@ -1,6 +1,7 @@
 import { IsEmail, IsNotEmpty, MinLength } from "class-validator"
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 import { Postagem } from "../../postagem/entities/postagem.entity"
+import { Exclude } from "class-transformer"
 
 @Entity({name: "tb_usuarios"})
 export class Usuario {
@@ -17,6 +18,7 @@ export class Usuario {
     @Column({length: 255, nullable: false })
     email: string
 
+    @Exclude({ toPlainOnly: true })
     @MinLength(8)
     @IsNotEmpty()
     @Column({length: 255, nullable: false }) 
