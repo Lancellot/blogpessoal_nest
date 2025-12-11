@@ -8,11 +8,14 @@ import {
     Param, 
     ParseIntPipe, 
     Post,
-    Put
+    Put,
+    UseGuards
 } from "@nestjs/common";
 import { TemaService } from "../services/tema.service";
 import { Tema } from "../entities/tema.entities";
+import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
 
+@UseGuards(JwtAuthGuard)
 @Controller('/temas')
 export class TemaController {
     constructor(private readonly temaService: TemaService) { }
