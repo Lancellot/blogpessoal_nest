@@ -6,16 +6,20 @@ import {
     PrimaryGeneratedColumn 
 } from "typeorm";
 import { Postagem } from "../../postagem/entities/postagem.entity";
+import { ApiProperty } from "@nestjs/swagger";
 
 @Entity({ name: "tb_temas" })
 export class Tema {
     @PrimaryGeneratedColumn()
+    @ApiProperty()
     id: number;
 
+    @ApiProperty()
     @IsNotEmpty()
     @Column({ length: 100, nullable: false })
     descricao: string;
 
+    @ApiProperty()
     @OneToMany(() => Postagem, (postagem) => postagem.tema)
     postagem: Postagem[];
 }

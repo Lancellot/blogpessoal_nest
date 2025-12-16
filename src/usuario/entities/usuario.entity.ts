@@ -7,7 +7,8 @@ import { ApiProperty } from "@nestjs/swagger"
 @Entity({name: "tb_usuarios"})
 export class Usuario {
 
-    @PrimaryGeneratedColumn() 
+    @PrimaryGeneratedColumn()
+    @ApiProperty()
     id: number
 
     @ApiProperty()
