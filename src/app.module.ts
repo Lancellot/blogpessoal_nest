@@ -9,18 +9,15 @@ import { Usuario } from './usuario/entities/usuario.entity';
 import { UsuarioModule } from './usuario/usuario.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { AppController } from './app.controller';
+import { ConfigModule } from '@nestjs/config';
+import { ProdService } from './data/services/drod.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: process.env.DB_TYPE as 'mysql',
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
-      entities: [Postagem, Tema, Usuario],
-      synchronize: process.env.DB_SYNCHRONIZE === 'development',
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRootAsync({
+      useClass: ProdService,
+      imports: [ConfigModule],
     }),
     PostagemModule,
     TemaModule,
