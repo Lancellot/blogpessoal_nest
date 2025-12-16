@@ -7,7 +7,7 @@ import {
     ILike, 
     Repository 
 } from "typeorm";
-import { Tema } from "../entities/tema.entities";
+import { Tema } from "../entities/tema.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 
 

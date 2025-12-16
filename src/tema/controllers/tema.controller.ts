@@ -12,7 +12,7 @@ import {
     UseGuards
 } from "@nestjs/common";
 import { TemaService } from "../services/tema.service";
-import { Tema } from "../entities/tema.entities";
+import { Tema } from "../entities/tema.entity";
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
 
 @UseGuards(JwtAuthGuard)
