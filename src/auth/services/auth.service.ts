@@ -5,48 +5,48 @@ import { Bcrypt } from '../bcrypt/bcrypt';
 import { UsuarioLogin } from '../entities/usuariologin.entity';
 import { UsuarioResponse } from '../interfaces/usuario-response.interface';
 
-
-
 @Injectable()
-export class AuthService{
+export class AuthService {
     constructor(
         private usuarioService: UsuarioService,
         private jwtService: JwtService,
         private bcrypt: Bcrypt
-    ){ }
+    ) { }
 
     async validateUser(email: string, password: string): Promise<UsuarioResponse | null> {
-
-        const buscaUsuario = await this.usuarioService.findByUsuario(email)
-
-        if(!buscaUsuario)
-            throw new HttpException('Usuário não encontrado!', HttpStatus.NOT_FOUND)
-
-        const matchPassword = await this.bcrypt.compararSenhas(password, buscaUsuario.senha)
-
-        if(buscaUsuario && matchPassword){
-            const { senha, ...resposta } = buscaUsuario
-            return resposta
+        const buscaUsuario = await this.usuarioService.findByUsuario(email);
+        
+        if (!buscaUsuario)
+            throw new HttpException('Usuário não encontrado!', HttpStatus.NOT_FOUND);
+        
+        const matchPassword = await this.bcrypt.compararSenhas(password, buscaUsuario.senha);
+        
+        if (buscaUsuario && matchPassword) {
+            const { senha, ...resposta } = buscaUsuario;
+            return resposta;
         }
-
-        return null
-
+        
+        return null;
     }
 
-    async login(emailLogin: UsuarioLogin){
-
-        const payload = { sub: emailLogin.email };
-
-        const buscaUsuario = await this.usuarioService.findByUsuario(emailLogin.email);
+    async login(usuarioLogin: UsuarioLogin) {
+        // Valida as credenciais do usuário
+        const usuario = await this.validateUser(usuarioLogin.email, usuarioLogin.senha);
         
-        return{
-            id: buscaUsuario?.id,
-            nome: buscaUsuario?.nome,
-            email : emailLogin.email,
-            senha: '',
-            foto: buscaUsuario?.foto,
-            token: `Bearer ${this.jwtService.sign(payload)}`,
+        if (!usuario) {
+            throw new HttpException('Email ou senha incorretos!', HttpStatus.UNAUTHORIZED);
         }
 
+        // Cria o payload do token
+        const payload = { sub: usuario.email };
+        
+        return {
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email,
+            senha: '',
+            foto: usuario.foto,
+            token: `Bearer ${this.jwtService.sign(payload)}`,
+        };
     }
 }
